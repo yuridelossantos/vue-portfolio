@@ -26,7 +26,7 @@
         </button>
 
         <h2>Welcome to My Portfolio!</h2>
-        <p>Hi, I'm Jonathan Yuri N. Delos Santos, An aspiring Web Application Developer!</p>
+        <p>Hi, I'm Jonathan Yuri N. Delos Santos, An FRONTEND Developer (Android Studio/Vue.js)!</p>
 
         <!-- Projects Section -->
         <section id="projects" class="projects-section">
