@@ -40,7 +40,7 @@
   }
   
   .project-card {
-    background: #98a4db; /* Light gray background for cards */
+    background: #b5bfec; /* Light gray background for cards */
     border-radius: 5px; /* Rounded corners */
     padding: 1rem; /* Padding inside cards */
     text-align: center; /* Center text in card */

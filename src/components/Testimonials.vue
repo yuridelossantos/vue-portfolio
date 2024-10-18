@@ -109,7 +109,7 @@
   }
   
   .testimonial {
-    background-color: #fff; /* White background for each testimonial */
+    background-color: #b5bfec; /* White background for each testimonial */
     border-radius: 5px; /* Rounded corners */
     padding: 1rem; /* Space inside testimonial */
     margin: 1rem 0; /* Space between testimonials */
@@ -130,7 +130,7 @@
   .comment-form {
     margin-top: 2rem; /* Space above the comment form */
     padding: 1.5rem; /* Padding inside the form */
-    background: #f9f9f9; /* Light background for the form */
+    background: #b5bfec; /* Light background for the form */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   }
