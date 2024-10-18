@@ -4,57 +4,65 @@
     <main class="resume-content">
       <h2 class="resume-title">My Resume</h2>
 
-      <section>
-        <h3>Profile</h3>
-        <div class="education-item">
-          <h4>Jonathan Yuri N. Delos Santos</h4>
-          <p><em>Computer Engineering, specialization in Cybersecurity.</em></p>
-        </div>
-      </section>
-      
-      <section class="contact-info">
-        <h3>Contact Information</h3>
-        <p>
-          Email: <a href="mailto:mjydelossantos@tip.edu.ph">mjydelossantos@tip.edu.ph</a>
-        </p>
-        <p>
-          LinkedIn: 
-          <a 
-            href="https://www.linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-          https://www.linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5.
-          </a>
-        </p>
-        <p>
-          Contact no: <a>+63 964 944 8259</a>
-        </p>
-      </section>
-      
-      <section>
-        <h3>Education</h3>
-        <div class="education-item">
-          <h4>Bachelor Of Science In Computer Engineering - Technological Institute of the Philippines</h4>
-          <p><em>2021 - 2025</em></p>
-          <h4>Senior High School - (STEM) Arellano University Juan Sumulong Campus</h4>
-          <p><em>2019 - 2021 
-          </em></p>
-          <h4>Junior High School - Carlos P. Garcia High School</h4>
-          <p><em>2021 - 2025</em></p>
-        </div>
-        <!-- Add more education details as needed -->
-      </section>
-      <section>
-        <h3>Skills</h3>
-        <ul class="skills-list">
-          <li>Cybersecurity Spealist</li>
-          <li>Networking</li>
-          <li>Full Stack Mobile Developer</li>
-          <li>Web App Developer</li>
-          <!-- Add more skills as needed -->
-        </ul>
-      </section>
+      <div class="content-container">
+        <aside class="personal-info">
+          <h3>Personal Info</h3>
+          <ul class="info-list">
+            <li>Birthday: <span>May 29, 2003</span></li>
+            <li>Gender: <span>Male</span></li>
+            <li>Age: <span>21</span></li>
+            <li>Citizenship: <span>Filipino</span></li>
+            <li>Contact no: <span>+63 964 944 8259</span></li>
+          </ul>
+        </aside>
+
+        <section class="main-content">
+          <h3>Profile</h3>
+          <div class="education-item">
+            <h4>Jonathan Yuri N. Delos Santos</h4>
+            <p><em>Computer Engineering, specialization in Cybersecurity.</em></p>
+          </div>
+
+          <section class="contact-info">
+            <h3>Contact Information</h3>
+            <p>
+              Email: <a href="mailto:mjydelossantos@tip.edu.ph">mjydelossantos@tip.edu.ph</a>
+            </p>
+            <p>
+              LinkedIn: 
+              <a 
+                href="https://www.linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+              https://www.linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5
+              </a>
+            </p>
+          </section>
+
+          <section>
+            <h3>Education</h3>
+            <div class="education-item">
+              <h4>Bachelor Of Science In Computer Engineering - Technological Institute of the Philippines</h4>
+              <p><em>2021 - 2025</em></p>
+              <h4>Senior High School - (STEM) Arellano University Juan Sumulong Campus</h4>
+              <p><em>2019 - 2021</em></p>
+              <h4>Junior High School - Carlos P. Garcia High School</h4>
+              <p><em>2015 - 2019</em></p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Skills</h3>
+            <ul class="skills-list">
+              <li>Cybersecurity Specialist</li>
+              <li>Networking</li>
+              <li>Full Stack Mobile Developer</li>
+              <li>Web App Developer</li>
+            </ul>
+          </section>
+        </section>
+      </div>
     </main>
     <Footer />
   </div>
@@ -88,12 +96,31 @@ export default {
   margin: 0 auto;
   padding: 40px; /* Increased padding for better spacing */
   overflow-y: auto; /* Allow scrolling if content overflows */
-  background-color: #ffffff; /* White background for a clean look */
+  background-color: #f7f7f7; /* Light background for a modern look */
   border-radius: 15px; /* More rounded corners */
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
   position: relative; /* For positioning pseudo-elements */
-  scrollbar-width: none; /* Firefox */
+}
 
+.content-container {
+  display: flex; /* Flexbox for side-by-side layout */
+  gap: 40px; /* Space between columns */
+}
+
+.personal-info {
+  flex: 1; /* Take up equal space */
+  background-color: #fff; /* White background for personal info */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding for personal info */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.main-content {
+  flex: 3; /* Take up more space than personal info */
+  background-color: #ffffff; /* White background for main content */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding for main content */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .resume-title {
@@ -122,18 +149,15 @@ section {
   margin-bottom: 40px; /* Increased spacing between sections */
 }
 
-.experience-item,
 .education-item {
   margin-bottom: 20px;
   padding: 20px; /* Added padding for better spacing */
   border: 1px solid #e0e0e0; /* Light border for separation */
   border-radius: 8px; /* Rounded corners for items */
-  background: linear-gradient(white, #f9f9f9); /* Subtle gradient background */
-  position: relative; /* For positioning pseudo-elements */
+  background: #f9f9f9; /* Subtle background */
   transition: transform 0.3s ease; /* Animation effect */
 }
 
-.experience-item:hover,
 .education-item:hover {
   transform: translateY(-5px); /* Lift effect on hover */
 }
@@ -144,6 +168,16 @@ h3 {
   padding-bottom: 5px;
   font-size: 1.6em; /* Slightly larger font for section titles */
   color: #333; /* Darker color for better contrast */
+}
+
+.info-list {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0;
+}
+
+.info-list li {
+  margin: 8px 0; /* Space between list items */
+  font-weight: 500; /* Semi-bold text for skills */
 }
 
 .skills-list {
@@ -163,27 +197,5 @@ h3 {
 .skills-list li:hover {
   background: #d3d3d3; /* Darker background on hover */
   transform: scale(1.02); /* Slightly enlarging effect on hover */
-}
-
-/* Additional styling for visual enhancement */
-.resume-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.1); /* Light overlay for depth */
-  border-radius: 15px; /* Match corners */
-  z-index: 0; /* Behind other elements */
-}
-
-.resume-content h3 {
-  z-index: 1; /* Bring section titles in front */
-}
-
-.resume-content p,
-.resume-content ul {
-  z-index: 1; /* Bring text in front */
 }
 </style>

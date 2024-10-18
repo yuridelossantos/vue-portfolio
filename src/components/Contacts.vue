@@ -3,10 +3,13 @@
     <Header />
 
     <section id="contacts" class="contacts-section">
-      <h3>Contact Me</h3>
+      <h3>Contacts</h3>
       <p>If you have any questions or just want to say hello, feel free to reach out!</p>
       <p>You can email me at: <strong>mjydelossantos@tip.edu.ph</strong></p>
       <p>You can message me on Facebook: <strong><a :href="facebookLink" target="_blank">{{ facebookLink }}</a></strong></p>
+      <p>You can message me on Instagram: <strong><a :href="IGLink" target="_blank">{{ IGLink }}</a></strong></p>
+      <p>You can call me at: <strong>+63 964 944 8259</strong></p>
+
     </section>
 
     <Footer />
@@ -26,6 +29,8 @@ export default {
   data() {
     return {
       facebookLink: 'https://www.facebook.com/jonathanyuri29/',
+      IGLink: 'https://www.instagram.com/iloveyouriii/',
+
     };
   },
 };
