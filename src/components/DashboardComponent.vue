@@ -53,8 +53,6 @@
             </div>
           </div>
         </section>
-
-        <!-- Include the new FeaturedProjects component -->
         <FeaturedProjects :projects="projects" />
       </main>
     </div>
@@ -193,7 +191,7 @@ html {
   background-color: #3498db; /* Button color */
   border: none;
   border-radius: 5px;
-  color: white;
+  color: 030303;
   cursor: pointer;
   font-size: 16px;
   margin-bottom: 1rem; /* Space below the button */
@@ -251,7 +249,7 @@ html {
   margin-bottom: 1rem; /* Space between paragraphs */
   line-height: 1.6; /* Improved readability with line height */
   font-size: 1rem; /* Font size for the text */
-  color: #34495e; /* Darker text color for contrast */
+  color: #030303; /* Darker text color for contrast */
 }
 
 /* Responsive Design */

@@ -100,6 +100,8 @@ export default {
   border-radius: 15px; /* More rounded corners */
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
   position: relative; /* For positioning pseudo-elements */
+  scrollbar-width: none; /* Firefox */
+
 }
 
 .content-container {
@@ -109,7 +111,7 @@ export default {
 
 .personal-info {
   flex: 1; /* Take up equal space */
-  background-color: #fff; /* White background for personal info */
+  background-color: #cecae7; /* White background for personal info */
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Padding for personal info */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -117,10 +119,11 @@ export default {
 
 .main-content {
   flex: 3; /* Take up more space than personal info */
-  background-color: #ffffff; /* White background for main content */
+  background-color: #cecae7; /* White background for main content */
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Padding for main content */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  
 }
 
 .resume-title {
