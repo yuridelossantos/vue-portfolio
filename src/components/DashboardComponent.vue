@@ -6,12 +6,12 @@
       <!-- Sidebar Section -->
       <transition name="slide-fade">
         <aside v-if="isSidebarVisible" class="sidebar">
-          <h3>Dashboard Menu</h3>
+          <h3 class="sidebar-title">Dashboard Menu</h3>
           <ul>
             <li><a @click="scrollToSection('about')">About Me</a></li>
             <li><a @click="scrollToSection('projects')">Projects</a></li>
-            <li><a @click="scrollToSection('certificates')">Certificates</a></li>
-            <li><a @click="scrollToSection('resume')">Resume</a></li>
+            <li><router-link to="/certifications">Certificates</router-link></li>
+            <li><router-link to="/resume">Resume</router-link></li>
             <li><a @click="scrollToSection('testimonials')">Testimonials</a></li>
             <li><a @click="scrollToSection('contacts')">Contacts</a></li>
           </ul>
@@ -32,18 +32,30 @@
           <h2>Welcome to My Portfolio!</h2>
           <p>
             Hi, I'm Jonathan Yuri N. Delos Santos, an aspiring Web Developer from 
-            the Technological Institute of the Philippines (TIP)!
+            the Technological Institute of the Philippines (TIP). I have a passion for creating dynamic and responsive web applications.
           </p>
         </section>
 
         <!-- About Me Section -->
         <section id="about" class="about-section">
           <h3>About Me</h3>
-          <p>
-            Welcome to my About Me section. Here you can find information about my 
-            background, skills, and experience. Feel free to reach out if you would 
-            like to know more!
-          </p>
+          <div class="about-content">
+            <img src="@/assets/profile1.jpg" alt="Profile Picture" class="profile-image" />
+            <div class="about-text">
+              <p>
+                Hello! I’m Jonathan Yuri N. Delos Santos, an enthusiastic web developer with a flair for creating immersive digital experiences. 
+                Currently pursuing my studies at the Technological Institute of the Philippines (TIP), I am driven by a passion for technology and innovation. 
+                My journey in web development has equipped me with a solid foundation in HTML, CSS, and JavaScript, allowing me to craft user-friendly and visually stunning web applications.
+              </p>
+              <p>
+                I believe that every line of code is a step toward transforming ideas into reality. With a keen eye for detail and a commitment to excellence, 
+                I thrive on challenges that push my creative boundaries. I am excited about the opportunity to collaborate on impactful projects that not only meet user needs but also inspire and engage them.
+              </p>
+              <p>
+                Let’s connect and explore how we can work together to bring innovative ideas to life!
+              </p>
+            </div>
+          </div>
         </section>
 
         <!-- Projects Section -->
@@ -163,12 +175,19 @@ html {
 }
 
 .sidebar {
-  width: 200px;
-  background-color: #333;
+  width: 250px;
+  background-color: #2c3e50; /* Darker background color */
   color: white;
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+}
+
+.sidebar-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .sidebar ul {
@@ -176,15 +195,27 @@ html {
   padding: 0;
 }
 
+.sidebar ul li {
+  margin: 0.5rem 0; /* Add space between items */
+}
+
 .sidebar ul li a {
   color: white;
   text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 10px; /* Padding for clickable area */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.sidebar ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
 }
 
 .dashboard-content {
   flex: 1;
   padding: 2rem;
-  background-color: #f5f5f5;
+  background-color: #ecf0f1; /* Lighter background color */
   overflow-y: auto;
 }
 
@@ -195,7 +226,7 @@ html {
 .contacts-section {
   margin-top: 2rem;
   background: white;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -220,7 +251,7 @@ html {
 
 /* Styles for the toggle button */
 .toggle-button {
-  background-color: #42b983; /* Button color */
+  background-color: #3498db; /* Button color */
   border: none;
   border-radius: 5px;
   color: white;
@@ -232,7 +263,7 @@ html {
 }
 
 .toggle-button:hover {
-  background-color: #36a374; /* Darker color on hover */
+  background-color: #2980b9; /* Darker color on hover */
 }
 
 .burger-icon {
@@ -244,6 +275,23 @@ html {
   transition: background-color 0.3s ease; /* Smooth color transition */
 }
 
+.about-content {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+}
+
+/* Adjust profile image styles */
+.profile-image {
+  width: 250px; /* Set the width of your profile image */
+  height: 250px; /* Set the height of your profile image */
+  border-radius: 50%; /* Make it circular */
+  margin-right: 20px; /* Space between image and text */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+  flex: 1; /* Allow text to take remaining space */
+}
 /* Add transitions for sidebar */
 .slide-fade-enter-active, .slide-fade-leave-active {
   transition: opacity 0.5s, transform 0.5s;
