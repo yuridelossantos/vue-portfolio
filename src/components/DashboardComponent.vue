@@ -3,7 +3,6 @@
     <Header />
 
     <div class="main-content">
-      <!-- Sidebar Section -->
       <transition name="slide-fade">
         <aside v-if="isSidebarVisible" class="sidebar">
           <h3 class="sidebar-title">Dashboard Menu</h3>
@@ -12,14 +11,13 @@
             <li><a @click="scrollToSection('projects')">Projects</a></li>
             <li><router-link to="/certifications">Certificates</router-link></li>
             <li><router-link to="/resume">Resume</router-link></li>
-            <li><a @click="scrollToSection('testimonials')">Testimonials</a></li>
-            <li><a @click="scrollToSection('contacts')">Contacts</a></li>
+            <li><router-link to="/testimonials">Testimonials</router-link></li>
+            <li><router-link to="/contacts">Contacts</router-link></li>
           </ul>
           <button class="toggle-button hide" @click="toggleSidebar">Hide Sidebar</button>
         </aside>
       </transition>
 
-      <!-- Main Content Section -->
       <main :class="['dashboard-content', { 'shift-right': !isSidebarVisible }]">
         <button v-if="!isSidebarVisible" class="toggle-button show" @click="toggleSidebar">
           <span class="burger-icon"></span>
@@ -27,7 +25,6 @@
           <span class="burger-icon"></span>
         </button>
 
-        <!-- Introduction Section -->
         <section class="intro-section">
           <h2>Welcome to My Portfolio!</h2>
           <p>
@@ -36,7 +33,6 @@
           </p>
         </section>
 
-        <!-- About Me Section -->
         <section id="about" class="about-section">
           <h3>About Me</h3>
           <div class="about-content">
@@ -58,42 +54,8 @@
           </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects-section">
-          <h3>Featured Projects</h3>
-          <div class="projects-grid">
-            <div 
-              class="project-card" 
-              v-for="project in projects" 
-              :key="project.id"
-            >
-              <img :src="project.image" alt="Project Image" />
-              <h4>{{ project.title }}</h4>
-              <p>{{ project.description }}</p>
-              <a :href="project.link" class="project-link">View Project</a>
-            </div>
-          </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials-section">
-          <h3>What People Say</h3>
-          <div 
-            class="testimonial" 
-            v-for="testimonial in testimonials" 
-            :key="testimonial.id"
-          >
-            <blockquote>{{ testimonial.quote }}</blockquote>
-            <cite>- {{ testimonial.author }}</cite>
-          </div>
-        </section>
-
-        <!-- Contacts Section -->
-        <section id="contacts" class="contacts-section">
-          <h3>Contacts</h3>
-          <p>You can Email me at: <strong>mjydelossantos@tip.edu.ph</strong></p>
-          <p>You can message me at FB: <strong>https://www.facebook.com/jonathanyuri29/</strong></p>
-        </section>
+        <!-- Include the new FeaturedProjects component -->
+        <FeaturedProjects :projects="projects" />
       </main>
     </div>
 
@@ -104,12 +66,16 @@
 <script>
 import Header from './Header.vue';
 import Footer from './Footer.vue';
+import FeaturedProjects from './FeaturedProjects.vue'; // Importing the new component
+import image1 from '@/assets/image1.jpg';
+import image2 from '@/assets/image2.png';
 
 export default {
   name: 'DashboardComponent',
   components: {
     Header,
     Footer,
+    FeaturedProjects, // Register the new component
   },
   data() {
     return {
@@ -119,27 +85,15 @@ export default {
           id: 1,
           title: 'EcoCity',
           description: 'A website that promotes Urban Planting.',
-          image: 'path/to/image1.jpg',
+          image: image1,
           link: 'https://sites.google.com/tip.edu.ph/ecocityfoundation',
         },
         {
           id: 2,
-          title: 'Project Two',
-          description: 'An e-commerce site with a focus on user experience.',
-          image: 'path/to/project-two-image.jpg',
-          link: 'https://link-to-project-two.com',
-        },
-      ],
-      testimonials: [
-        {
-          id: 1,
-          quote: 'This developer is fantastic! Highly recommended.',
-          author: 'John Doe',
-        },
-        {
-          id: 2,
-          quote: 'Their attention to detail is impressive!',
-          author: 'Jane Smith',
+          title: 'Mental Health App',
+          description: 'Mobile App that makes the user to have awareness in mental health.',
+          image: image2,
+          link: 'https://github.com/yuridelossantos/Mental-Health-App.git',
         },
       ],
     };
@@ -222,7 +176,6 @@ html {
 .intro-section,
 .about-section,
 .projects-section,
-.testimonials-section,
 .contacts-section {
   margin-top: 2rem;
   background: white;
@@ -231,78 +184,88 @@ html {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.projects-grid {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.project-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  width: 45%;
-}
-
-.testimonial {
-  margin-bottom: 1rem;
-}
-
 /* Styles for the toggle button */
 .toggle-button {
+  display: flex; /* Flexbox for alignment */
+  flex-direction: column; /* Stack lines vertically */
+  align-items: center; /* Center items */
+  justify-content: center; /* Center content vertically */
   background-color: #3498db; /* Button color */
   border: none;
   border-radius: 5px;
   color: white;
   cursor: pointer;
   font-size: 16px;
-  padding: 10px 15px;
-  margin: 10px; /* Add margin around the button */
-  transition: background-color 0.3s ease; /* Smooth background transition */
+  margin-bottom: 1rem; /* Space below the button */
+  padding: 0.5rem 1rem; /* Padding inside the button */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .toggle-button:hover {
-  background-color: #2980b9; /* Darker color on hover */
+  background-color: #2980b9; /* Darker shade on hover */
 }
 
+/* Burger icon styles */
 .burger-icon {
-  display: block;
-  width: 30px; /* Width of burger icon */
-  height: 4px; /* Height of burger icon */
-  background-color: white; /* Color of burger icon */
-  margin: 5px auto; /* Center align burger icon */
-  transition: background-color 0.3s ease; /* Smooth color transition */
+  display: block; /* Display as block */
+  width: 30px; /* Width of the burger icon */
+  height: 4px; /* Height of the burger lines */
+  background-color: white; /* Color of the lines */
+  margin: 5px auto; /* Space between lines */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
+.toggle-button.open .burger-icon:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.toggle-button.open .burger-icon:nth-child(2) {
+  opacity: 0; /* Hide the middle line */
+}
+
+.toggle-button.open .burger-icon:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* About section styles */
 .about-content {
-  display: flex; /* Use flexbox for layout */
-  align-items: center; /* Center items vertically */
+  display: flex; /* Aligns children (image and text) in a row */
+  align-items: center; /* Vertically centers the image and text */
+  margin-top: 1rem; /* Space above the content */
+  padding: 1rem; /* Padding around the content */
 }
 
-/* Adjust profile image styles */
 .profile-image {
-  width: 250px; /* Set the width of your profile image */
-  height: 250px; /* Set the height of your profile image */
-  border-radius: 50%; /* Make it circular */
+  width: 150px; /* Set width of the profile image */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 75px; /* Makes the image circular */
   margin-right: 20px; /* Space between image and text */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
 }
 
 .about-text {
-  flex: 1; /* Allow text to take remaining space */
-}
-/* Add transitions for sidebar */
-.slide-fade-enter-active, .slide-fade-leave-active {
-  transition: opacity 0.5s, transform 0.5s;
-}
-.slide-fade-enter, .slide-fade-leave-to {
-  opacity: 0;
-  transform: translateX(-100%);
+  flex: 1; /* Makes the text container take up remaining space */
 }
 
-/* Shift content when sidebar is hidden */
-.shift-right {
-  margin-left: 0; /* Remove left margin when sidebar is hidden */
+.about-text p {
+  margin-bottom: 1rem; /* Space between paragraphs */
+  line-height: 1.6; /* Improved readability with line height */
+  font-size: 1rem; /* Font size for the text */
+  color: #34495e; /* Darker text color for contrast */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column; /* Stack the image and text on smaller screens */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .project-image {
+    width: 300px; /* Set the desired width */
+    height: 200px; /* Set the desired height */
+    object-fit: cover; /* Ensures the image covers the area without distorting */
+    border-radius: 5px; /* Rounded corners for images */
+}
 }
 </style>

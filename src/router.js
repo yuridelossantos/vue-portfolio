@@ -3,6 +3,9 @@ import DashboardComponent from './components/DashboardComponent.vue';
 import LoginPage from './components/LoginPage.vue';
 import Certifications from './components/Certifications.vue';
 import Resume from './components/Resume.vue';
+import Contacts from './components/Contacts.vue';
+import Testimonials from './components/Testimonials.vue';
+import FeaturedProjects from './components/FeaturedProjects.vue';
 
 const routes = [
   {
@@ -24,6 +27,21 @@ const routes = [
     path: '/resume',
     name: 'Resume',
     component: Resume,
+  },
+
+  {
+    path: '/contacts',
+    component: Contacts, // Add the new Contacts route
+  },
+
+  {
+    path: '/projects',
+    component: FeaturedProjects, // Add the new Contacts route
+  },
+
+  {
+    path: '/testimonials',
+    component: Testimonials, // Add the new Testimonials route
   },
 ];
 
