@@ -7,12 +7,12 @@
 
 <script>
 import LoginPage from './components/LoginPage.vue';
-import Header from './components/Header.vue'; // Import your Header component
-import Footer from './components/Footer.vue'; // Import your Footer component
+import Header from './components/Header.vue'; 
+import Footer from './components/Footer.vue'; 
 export default {
   data() {
     return {
-      isAuthenticated: false, // Add a property to track authentication state
+      isAuthenticated: false, 
     };
   },
   methods: {
@@ -32,6 +32,6 @@ export default {
 <style>
 main {
   padding: 2rem;
-  min-height: calc(100vh - 120px); /* Ensure content area takes up remaining space */
+  min-height: calc(100vh - 120px);
 }
 </style>

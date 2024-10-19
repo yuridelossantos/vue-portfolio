@@ -31,17 +31,17 @@ const routes = [
 
   {
     path: '/contacts',
-    component: Contacts, // Add the new Contacts route
+    component: Contacts,
   },
 
   {
     path: '/projects',
-    component: FeaturedProjects, // Add the new Contacts route
+    component: FeaturedProjects, 
   },
 
   {
     path: '/testimonials',
-    component: Testimonials, // Add the new Testimonials route
+    component: Testimonials, 
   },
 ];
 

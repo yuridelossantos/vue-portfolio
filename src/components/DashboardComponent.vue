@@ -29,7 +29,7 @@
           <h2>Welcome to My Portfolio!</h2>
           <p>
             Hi, I'm Jonathan Yuri N. Delos Santos, an aspiring Web Developer from 
-            the Technological Institute of the Philippines (TIP). I have a passion for creating dynamic and responsive web applications.
+            Technological Institute of the Philippines (TIP). I have a passion for creating dynamic and responsive web applications.
           </p>
         </section>
 
@@ -39,13 +39,14 @@
             <img src="@/assets/profile1.jpg" alt="Profile Picture" class="profile-image" />
             <div class="about-text">
               <p>
-                Hello! I’m Jonathan Yuri N. Delos Santos, an enthusiastic web developer with a flair for creating immersive digital experiences. 
-                Currently pursuing my studies at the Technological Institute of the Philippines (TIP), I am driven by a passion for technology and innovation. 
-                My journey in web development has equipped me with a solid foundation in HTML, CSS, and JavaScript, allowing me to craft user-friendly and visually stunning web applications.
+                Hello! I’m Jonathan Yuri N. Delos Santos, an aspiring student with passion in creating website and application also in cybersecurity. 
+                <br>Currently pursuing my studies at the Technological Institute of the Philippines (TIP), Taking the program of BS in Computer Engineering.<br> 
+                My journey in web and app development has equipped me with a foundation in HTML, CSS, JavaScript, python, and Kotlin and Java. 
+                <br> Allowing me to craft working website and applications<br> 
               </p>
               <p>
                 I believe that every line of code is a step toward transforming ideas into reality. With a keen eye for detail and a commitment to excellence, 
-                I thrive on challenges that push my creative boundaries. I am excited about the opportunity to collaborate on impactful projects that not only meet user needs but also inspire and engage them.
+                I am excited about the opportunity to collaborate on impactful projects that not only meet user needs but also inspire and engage them.
               </p>
               <p>
                 Let’s connect and explore how we can work together to bring innovative ideas to life!
@@ -64,16 +65,18 @@
 <script>
 import Header from './Header.vue';
 import Footer from './Footer.vue';
-import FeaturedProjects from './FeaturedProjects.vue'; // Importing the new component
+import FeaturedProjects from './FeaturedProjects.vue';
 import image1 from '@/assets/image1.jpg';
 import image2 from '@/assets/image2.png';
+import image3 from '@/assets/image3.png';
+
 
 export default {
   name: 'DashboardComponent',
   components: {
     Header,
     Footer,
-    FeaturedProjects, // Register the new component
+    FeaturedProjects, 
   },
   data() {
     return {
@@ -93,6 +96,13 @@ export default {
           image: image2,
           link: 'https://github.com/yuridelossantos/Mental-Health-App.git',
         },
+        {
+          id: 3,
+          title: 'Mental Health App',
+          description: 'Mobile App that makes the user to have awareness in mental health.',
+          image: image3,
+          link: 'https://github.com/TenJer21/WEB_MECHS.git',
+        },
       ],
     };
   },
@@ -109,7 +119,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 html {
   scroll-behavior: smooth;
@@ -128,12 +137,12 @@ html {
 
 .sidebar {
   width: 250px;
-  background-color: #2c3e50; /* Darker background color */
+  background-color: #2c3e50;
   color: white;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-title {
@@ -148,26 +157,26 @@ html {
 }
 
 .sidebar ul li {
-  margin: 0.5rem 0; /* Add space between items */
+  margin: 0.5rem 0;
 }
 
 .sidebar ul li a {
   color: white;
   text-decoration: none;
   font-size: 1.1rem;
-  padding: 0.5rem 10px; /* Padding for clickable area */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s ease; /* Smooth background transition */
+  padding: 0.5rem 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .sidebar ul li a:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-content {
   flex: 1;
   padding: 2rem;
-  background-color: #ecf0f1; /* Lighter background color */
+  background-color: #ecf0f1;
   overflow-y: auto;
 }
 
@@ -182,35 +191,33 @@ html {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for the toggle button */
 .toggle-button {
-  display: flex; /* Flexbox for alignment */
-  flex-direction: column; /* Stack lines vertically */
-  align-items: center; /* Center items */
-  justify-content: center; /* Center content vertically */
-  background-color: #3498db; /* Button color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #3498db;
   border: none;
   border-radius: 5px;
-  color: 030303;
+  color: #030303;
   cursor: pointer;
   font-size: 16px;
-  margin-bottom: 1rem; /* Space below the button */
-  padding: 0.5rem 1rem; /* Padding inside the button */
-  transition: background-color 0.3s ease; /* Smooth transition */
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .toggle-button:hover {
-  background-color: #2980b9; /* Darker shade on hover */
+  background-color: #2980b9;
 }
 
-/* Burger icon styles */
 .burger-icon {
-  display: block; /* Display as block */
-  width: 30px; /* Width of the burger icon */
-  height: 4px; /* Height of the burger lines */
-  background-color: white; /* Color of the lines */
-  margin: 5px auto; /* Space between lines */
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  margin: 5px auto;
+  transition: all 0.3s ease;
 }
 
 .toggle-button.open .burger-icon:nth-child(1) {
@@ -218,52 +225,50 @@ html {
 }
 
 .toggle-button.open .burger-icon:nth-child(2) {
-  opacity: 0; /* Hide the middle line */
+  opacity: 0;
 }
 
 .toggle-button.open .burger-icon:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* About section styles */
 .about-content {
-  display: flex; /* Aligns children (image and text) in a row */
-  align-items: center; /* Vertically centers the image and text */
-  margin-top: 1rem; /* Space above the content */
-  padding: 1rem; /* Padding around the content */
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
 }
 
 .profile-image {
-  width: 150px; /* Set width of the profile image */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 75px; /* Makes the image circular */
-  margin-right: 20px; /* Space between image and text */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+  width: 150px;
+  height: auto;
+  border-radius: 75px;
+  margin-right: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .about-text {
-  flex: 1; /* Makes the text container take up remaining space */
+  flex: 1;
 }
 
 .about-text p {
-  margin-bottom: 1rem; /* Space between paragraphs */
-  line-height: 1.6; /* Improved readability with line height */
-  font-size: 1rem; /* Font size for the text */
-  color: #030303; /* Darker text color for contrast */
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #030303;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .about-content {
-    flex-direction: column; /* Stack the image and text on smaller screens */
-    align-items: flex-start; /* Align items to the start */
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .project-image {
-    width: 300px; /* Set the desired width */
-    height: 200px; /* Set the desired height */
-    object-fit: cover; /* Ensures the image covers the area without distorting */
-    border-radius: 5px; /* Rounded corners for images */
-}
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
 }
 </style>

@@ -1,51 +1,42 @@
 <template>
-  <div class="resume">
-    <Header />
+  <div class="resume" ref="resumeContent">
     <main class="resume-content">
-      <h2 class="resume-title">My Resume</h2>
+      <h2 class="resume-title">Jonathan Yuri N. Delos Santos</h2>
+      <h4 class="resume-subtitle">Computer Engineering | Specializing in Cybersecurity</h4>
 
       <div class="content-container">
         <aside class="personal-info">
-          <h3>Personal Info</h3>
-          <ul class="info-list">
-            <li>Birthday: <span>May 29, 2003</span></li>
-            <li>Gender: <span>Male</span></li>
-            <li>Age: <span>21</span></li>
-            <li>Citizenship: <span>Filipino</span></li>
-            <li>Contact no: <span>+63 964 944 8259</span></li>
-          </ul>
-        </aside>
-
-        <section class="main-content">
-          <h3>Profile</h3>
-          <div class="education-item">
-            <h4>Jonathan Yuri N. Delos Santos</h4>
-            <p><em>Computer Engineering, specialization in Cybersecurity.</em></p>
-          </div>
-
-          <section class="contact-info">
-            <h3>Contact Information</h3>
-            <p>
-              Email: <a href="mailto:mjydelossantos@tip.edu.ph">mjydelossantos@tip.edu.ph</a>
-            </p>
-            <p>
-              LinkedIn: 
-              <a 
-                href="https://www.linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-              https://www.linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5
-              </a>
-            </p>
+          <section>
+            <h3>Personal Information</h3>
+            <ul class="info-list">
+              <li>Birthday: <span>May 29, 2003</span></li>
+              <li>Gender: <span>Male</span></li>
+              <li>Age: <span>21</span></li>
+              <li>Citizenship: <span>Filipino</span></li>
+              <li>Contact: <span>+63 964 944 8259</span></li>
+              <li>Email: <a href="mailto:mjydelossantos@tip.edu.ph">mjydelossantos@tip.edu.ph</a></li>
+              <li>LinkedIn: <a href="https://www.linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5" target="_blank">LinkedIn Profile</a></li>
+            </ul>
           </section>
 
           <section>
+            <h3>Programming Languages</h3>
+            <ul class="info-list">
+              <li>Java</li>
+              <li>Kotlin</li>
+              <li>Python</li>
+              <li>Vue.js</li>
+            </ul>
+          </section>
+        </aside>
+
+        <section class="main-content">
+          <section>
             <h3>Education</h3>
             <div class="education-item">
-              <h4>Bachelor Of Science In Computer Engineering - Technological Institute of the Philippines</h4>
+              <h4>Bachelor of Science in Computer Engineering - Technological Institute of the Philippines</h4>
               <p><em>2021 - 2025</em></p>
-              <h4>Senior High School - (STEM) Arellano University Juan Sumulong Campus</h4>
+              <h4>Senior High School (STEM) - Arellano University Juan Sumulong Campus</h4>
               <p><em>2019 - 2021</em></p>
               <h4>Junior High School - Carlos P. Garcia High School</h4>
               <p><em>2015 - 2019</em></p>
@@ -63,20 +54,31 @@
           </section>
         </section>
       </div>
+
+      <button @click="downloadPDF">Download as PDF</button>
     </main>
-    <Footer />
   </div>
 </template>
 
 <script>
-import Header from './Header.vue'; // Adjust the path if needed
-import Footer from './Footer.vue'; // Adjust the path if needed
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 export default {
   name: 'Resume',
-  components: {
-    Header,
-    Footer
+  methods: {
+    async downloadPDF() {
+      const resumeContent = this.$refs.resumeContent;
+      const canvas = await html2canvas(resumeContent);
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('Resume_Jonathan_Yuri_N_Delos_Santos.pdf');
+    }
   }
 };
 </script>
@@ -84,121 +86,87 @@ export default {
 <style scoped>
 .resume {
   display: flex;
-  flex-direction: column;
-  height: 100vh; /* Full viewport height */
-  font-family: 'Arial', sans-serif;
-  color: #333; /* Dark gray text for better readability */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .resume-content {
-  flex: 1; /* Take up remaining space */
-  max-width: 1200px; /* Wider layout for more space */
-  margin: 0 auto;
-  padding: 40px; /* Increased padding for better spacing */
-  overflow-y: auto; /* Allow scrolling if content overflows */
-  background-color: #f7f7f7; /* Light background for a modern look */
-  border-radius: 15px; /* More rounded corners */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
-  position: relative; /* For positioning pseudo-elements */
-  scrollbar-width: none; /* Firefox */
-
-}
-
-.content-container {
-  display: flex; /* Flexbox for side-by-side layout */
-  gap: 40px; /* Space between columns */
-}
-
-.personal-info {
-  flex: 1; /* Take up equal space */
-  background-color: #cecae7; /* White background for personal info */
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Padding for personal info */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.main-content {
-  flex: 3; /* Take up more space than personal info */
-  background-color: #cecae7; /* White background for main content */
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Padding for main content */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  
+  width: 100%;
+  max-width: 900px;
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .resume-title {
   text-align: center;
-  color: #0056b3; /* Blue title for a professional look */
-  font-size: 2.8em; /* Larger title font size for emphasis */
-  margin-bottom: 30px; /* Spacing below title */
-  text-transform: uppercase; /* Uppercase title for a bold look */
+  font-size: 2.5em;
+  color: #0056b3;
+  margin-bottom: 0.2em;
 }
 
-.contact-info {
-  margin-bottom: 40px;
+.resume-subtitle {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #333;
 }
 
-.contact-info a {
-  color: #0056b3; /* Link color */
-  text-decoration: none; /* Remove underline */
-  font-weight: bold; /* Bold links for emphasis */
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-.contact-info a:hover {
-  text-decoration: underline; /* Underline on hover */
+.personal-info {
+  flex: 1;
+  background-color: #f0f0f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-section {
-  margin-bottom: 40px; /* Increased spacing between sections */
-}
-
-.education-item {
-  margin-bottom: 20px;
-  padding: 20px; /* Added padding for better spacing */
-  border: 1px solid #e0e0e0; /* Light border for separation */
-  border-radius: 8px; /* Rounded corners for items */
-  background: #f9f9f9; /* Subtle background */
-  transition: transform 0.3s ease; /* Animation effect */
-}
-
-.education-item:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
+.main-content {
+  flex: 2;
+  background-color: #f0f0f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 h3 {
-  margin-top: 0;
-  border-bottom: 2px solid #0056b3; /* Underline for section titles */
-  padding-bottom: 5px;
-  font-size: 1.6em; /* Slightly larger font for section titles */
-  color: #333; /* Darker color for better contrast */
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  color: #0056b3;
 }
 
-.info-list {
-  list-style-type: none; /* Remove default list styles */
-  padding: 0;
-}
-
-.info-list li {
-  margin: 8px 0; /* Space between list items */
-  font-weight: 500; /* Semi-bold text for skills */
-}
-
+.info-list,
 .skills-list {
-  list-style-type: none; /* Remove default list styles */
+  list-style: none;
   padding: 0;
 }
 
+.info-list li,
 .skills-list li {
-  background: #e9ecef; /* Light background for skills */
-  margin: 8px 0;
-  padding: 12px; /* Adjusted padding for skills */
-  border-radius: 5px; /* Rounded corners */
-  font-weight: 500; /* Semi-bold text for skills */
-  transition: background 0.3s, transform 0.3s; /* Smooth transition on hover */
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
-.skills-list li:hover {
-  background: #d3d3d3; /* Darker background on hover */
-  transform: scale(1.02); /* Slightly enlarging effect on hover */
+button {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #003f7f;
 }
 </style>

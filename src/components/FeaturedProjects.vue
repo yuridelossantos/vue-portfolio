@@ -23,56 +23,55 @@
     },
   };
   </script>
- <style scoped>
- .projects-section {
-     margin-top: 2rem; /* Space above the section */
-     padding: 1.5rem; /* Padding inside the section */
-     background: linear-gradient(135deg, #f0f4f8, #d9e4f5); /* Gradient background */
-     border-radius: 8px; /* Rounded corners */
-     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
- }
- 
- .projects-grid {
-     display: grid; /* Use grid layout */
-     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
-     gap: 1.5rem; /* Space between grid items */
- }
- 
- .project-card {
-     background: #ffffff; /* White background for cards */
-     border-radius: 10px; /* More rounded corners */
-     padding: 1rem; /* Padding inside cards */
-     text-align: center; /* Center text in card */
-     transition: box-shadow 0.3s, transform 0.3s; /* Smooth transition for shadow and scaling */
-     border: 1px solid #3498db; /* Border to enhance card definition */
- }
- 
- .project-card:hover {
-     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow on hover */
-     transform: translateY(-5px); /* Lift effect on hover */
- }
- 
- .project-image {
-     width: 100%; /* Full width for images */
-     height: 300px; /* Adjusted height */
-     object-fit: cover; /* Ensures the image covers the area without distorting */
-     border-radius: 0px; /* Rounded corners for images */
- }
- 
- .project-link {
-     display: inline-block; /* Block display for link */
-     margin-top: 1rem; /* Space above the link */
-     padding: 0.5rem 1rem; /* Padding inside the link */
-     background-color: #3498db; /* Button color */
-     color: white; /* Text color */
-     border-radius: 5px; /* Rounded corners */
-     text-decoration: none; /* Remove underline */
-     transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
- }
- 
- .project-link:hover {
-     background-color: #2980b9; /* Darker shade on hover */
-     transform: scale(1.05); /* Slightly enlarge on hover */
- }
- </style>
- 
+<style scoped>
+.projects-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: box-shadow 0.3s, transform 0.3s;
+  border: 1px solid #3498db;
+}
+
+.project-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.project-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 0px;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.project-link:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+</style>

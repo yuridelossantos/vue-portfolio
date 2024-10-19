@@ -21,10 +21,9 @@
 </template>
 
 <script>
-import Header from './Header.vue'; // Adjust the path if needed
-import Footer from './Footer.vue'; // Adjust the path if needed
+import Header from './Header.vue';
+import Footer from './Footer.vue';
 
-// Importing images at the top
 import cert1 from '@/assets/cert1.jpg';
 import cert2 from '@/assets/cert2.jpg';
 import cert3 from '@/assets/cert3.jpg';
@@ -44,34 +43,33 @@ export default {
           name: 'CCNAv7: Enterprise Networking, Security, and Automation.', 
           issuer: 'CISCO Network Academy', 
           date: '2024-05-16', 
-          image: cert1 // Use the imported image
+          image: cert1
         },
         { 
           id: 2, 
           name: 'CCNAv7: Introduction to Networks', 
           issuer: 'CISCO Network Academy', 
           date: '2024-01-31', 
-          image: cert2 // Use the imported image
+          image: cert2
         },
         { 
           id: 3, 
           name: 'CCNAv7: Switching, Routing, and Wireless Essentials', 
           issuer: 'CISCO Network Academy', 
           date: '2023-12-15', 
-          image: cert3 // Use the imported image
+          image: cert3
         },
         { 
           id: 4, 
           name: 'Cybersecurity Essentials', 
           issuer: 'CISCO Network Academy', 
           date: '2023-05-17', 
-          image: cert4 // Use the imported image
+          image: cert4
         },
       ]
     };
   },
   mounted() {
-    // Sort certifications by date
     this.certifications.sort((a, b) => new Date(b.date) - new Date(a.date));
   }
 };
@@ -81,35 +79,35 @@ export default {
 .certifications {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
-  background-color: #f9f9f9; /* Light background */
+  height: 100vh;
+  background-color: #f9f9f9;
 }
 
 .certifications-content {
-  flex: 1; /* Take up remaining space */
-  max-width: 1000px; /* Optional: control max width */
+  flex: 1;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
-  overflow-y: scroll; /* Allow scrolling vertically */
-  scrollbar-width: none; /* Firefox */
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .certifications-content::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+  display: none;
 }
 
 h2 {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 20px;
-  text-align: center; /* Center the heading */
-  color: #333; /* Dark text color */
+  text-align: center;
+  color: #333;
 }
 
 .certifications-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
-  gap: 20px; /* Spacing between cards */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .certification-card {
@@ -117,40 +115,40 @@ h2 {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for hover effect */
-  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .certification-card:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .cert-image {
-  width: 100%; /* Responsive image */
+  width: 100%;
   height: auto;
-  transition: transform 0.3s ease; /* Smooth zoom on hover */
+  transition: transform 0.3s ease;
 }
 
 .certification-card:hover .cert-image {
-  transform: scale(1.05); /* Slight zoom effect on image hover */
+  transform: scale(1.05);
 }
 
 .cert-details {
   padding: 15px;
-  color: #555; /* Soft text color */
+  color: #555;
 }
 
 .cert-details h3 {
   font-size: 1.5rem;
-  margin: 0 0 5px; /* Remove default margin */
-  color: #2c3e50; /* Darker color for headings */
+  margin: 0 0 5px;
+  color: #2c3e50;
 }
 
 .cert-details .issuer,
 .cert-details .date {
-  color: #777; /* Lighter color for secondary text */
-  margin: 0; /* Remove default margin */
-  font-size: 0.9rem; /* Smaller font size */
+  color: #777;
+  margin: 0;
+  font-size: 0.9rem;
 }
 </style>

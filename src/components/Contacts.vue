@@ -9,7 +9,6 @@
       <p>You can message me on Facebook: <strong><a :href="facebookLink" target="_blank">{{ facebookLink }}</a></strong></p>
       <p>You can message me on Instagram: <strong><a :href="IGLink" target="_blank">{{ IGLink }}</a></strong></p>
       <p>You can call me at: <strong>+63 964 944 8259</strong></p>
-
     </section>
 
     <Footer />
@@ -30,7 +29,6 @@ export default {
     return {
       facebookLink: 'https://www.facebook.com/jonathanyuri29/',
       IGLink: 'https://www.instagram.com/iloveyouriii/',
-
     };
   },
 };
@@ -44,33 +42,33 @@ export default {
 }
 
 .contacts-section {
-  flex: 1; /* Take remaining space */
+  flex: 1;
   margin-top: 2rem;
   background: white;
-  padding: 2rem; /* Increased padding for better spacing */
+  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 800px; /* Max width for better readability */
-  margin-left: auto; /* Center the section */
-  margin-right: auto; /* Center the section */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h3 {
-  font-size: 2rem; /* Larger heading size */
-  margin-bottom: 1rem; /* Space below the heading */
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 p {
-  font-size: 1.1rem; /* Slightly larger font size for readability */
-  line-height: 1.5; /* Improved line height */
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
 
 a {
-  color: #3498db; /* Link color */
-  text-decoration: none; /* Remove underline */
+  color: #3498db;
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline; /* Underline on hover for better UX */
+  text-decoration: underline;
 }
 </style>

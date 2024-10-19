@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router'; // Adjust the path as necessary
+import router from './router'; 
 
 createApp(App)
-  .use(router) // Use the router
+  .use(router) 
   .mount('#app');

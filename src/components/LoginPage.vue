@@ -64,7 +64,7 @@ html, body {
 }
 
 .loginpage {
-  background-image: url('@/assets/bglogin.jpg'); /* Use your desired image */
+  background-image: url('@/assets/bglogin.jpg'); 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -117,7 +117,7 @@ input {
 button {
   width: 100%;
   padding: 10px;
-  background-color: #0d2f0e; /* Green background */
+  background-color: #0d2f0e; 
   color: white;
   border: none;
   border-radius: 5px;
@@ -126,6 +126,6 @@ button {
 }
 
 button:hover {
-  background-color: #227225; /* Darker green on hover */
+  background-color: #227225; 
 }
 </style>
