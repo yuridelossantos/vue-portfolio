@@ -1,8 +1,11 @@
 <template>
   <div class="resume" ref="resumeContent">
+    <!-- Header component for the resume -->
     <Header />
     <main class="resume-content">
+      <!-- Main title of the resume -->
       <h2 class="resume-title">Jonathan Yuri N. Delos Santos</h2>
+      <!-- Subtitle highlighting the user's field of study -->
       <h4 class="resume-subtitle">Computer Engineering | Specializing in Cybersecurity</h4>
 
       <div class="content-container">
@@ -10,6 +13,7 @@
           <section>
             <h3>Personal Information</h3>
             <ul class="info-list">
+              <!-- Personal details including birthday, gender, age, citizenship, contact information, and LinkedIn -->
               <li>Birthday: <span>May 29, 2003</span></li>
               <li>Gender: <span>Male</span></li>
               <li>Age: <span>21</span></li>
@@ -23,6 +27,7 @@
           <section>
             <h3>Programming Languages</h3>
             <ul class="info-list">
+              <!-- List of programming languages the user is proficient in -->
               <li>Java</li>
               <li>Kotlin</li>
               <li>Python</li>
@@ -49,6 +54,7 @@
           <section>
             <h3>Skills</h3>
             <ul class="skills-list">
+              <!-- List of skills relevant to the user's field -->
               <li>Cybersecurity Specialist</li>
               <li>Networking</li>
               <li>Full Stack Mobile Developer</li>
@@ -58,39 +64,44 @@
         </section>
       </div>
     </main>
+    <!-- Button to download the resume as a PDF -->
     <button @click="downloadPDF">Download Resume</button>
+    <!-- Footer component for the resume -->
     <Footer />
   </div>
 </template>
 
 <script>
-import Header from './Header.vue'; 
-import Footer from './Footer.vue'; 
-import html2pdf from 'html2pdf.js';
+import Header from './Header.vue'; // Importing Header component
+import Footer from './Footer.vue'; // Importing Footer component
+import html2pdf from 'html2pdf.js'; // Importing html2pdf.js library for PDF generation
 
 export default {
-  name: 'Resume',
+  name: 'Resume', // Component name
   components: {
-    Header,
-    Footer
+    Header, // Registering Header component
+    Footer // Registering Footer component
   },
   methods: {
+    // Method to download the resume as a PDF
     downloadPDF() {
-      const resumeElement = this.$refs.resumeContent;
+      const resumeElement = this.$refs.resumeContent; // Reference to the resume content
 
+      // Cloning the main content for PDF generation
       const mainContent = resumeElement.querySelector('.resume-content').cloneNode(true);
       const opt = {
-        margin: 0.5, 
-        filename: 'resume.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'legal', orientation: 'portrait' } 
+        margin: 0.5, // Margin settings for the PDF
+        filename: 'resume.pdf', // Filename for the downloaded PDF
+        image: { type: 'jpeg', quality: 0.98 }, // Image settings for the PDF
+        html2canvas: { scale: 2 }, // Scaling factor for html2canvas
+        jsPDF: { unit: 'in', format: 'legal', orientation: 'portrait' } // PDF settings
       };
 
+      // Generating and saving the PDF
       html2pdf()
-        .from(mainContent) 
-        .set(opt)
-        .save();
+        .from(mainContent) // Setting the content to convert
+        .set(opt) // Applying the options
+        .save(); // Triggering the download
     }
   }
 };
@@ -98,106 +109,106 @@ export default {
 
 <style scoped>
 .resume {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  padding: 20px;
+  display: flex; /* Flexbox layout for the resume */
+  flex-direction: column; /* Arranging items vertically */
+  font-family: 'Arial', sans-serif; /* Font style for the resume */
+  color: #333; /* Text color */
+  padding: 20px; /* Padding around the resume */
 }
 
 .resume-content {
-  max-width: 100%; 
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 15px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  page-break-inside: avoid; 
+  max-width: 100%; /* Ensuring content does not exceed the width */
+  padding: 20px; /* Padding inside the content */
+  background-color: #f7f7f7; /* Background color for the content */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  page-break-inside: avoid; /* Prevent page breaks within the content */
 }
 
 .resume-title {
-  text-align: center;
-  color: #0056b3;
-  font-size: 2.5em; 
-  margin-bottom: 10px;
-  text-transform: uppercase;
+  text-align: center; /* Centering the title */
+  color: #0056b3; /* Title color */
+  font-size: 2.5em; /* Title font size */
+  margin-bottom: 10px; /* Margin below the title */
+  text-transform: uppercase; /* Uppercase title */
 }
 
 .resume-subtitle {
-  text-align: center;
-  color: #333;
-  font-size: 1.5em; 
-  margin-bottom: 20px;
+  text-align: center; /* Centering the subtitle */
+  color: #333; /* Subtitle color */
+  font-size: 1.5em; /* Subtitle font size */
+  margin-bottom: 20px; /* Margin below the subtitle */
 }
 
 .content-container {
-  display: flex;
-  gap: 40px;
+  display: flex; /* Flexbox layout for the content container */
+  gap: 40px; /* Gap between items */
 }
 
 .personal-info {
-  flex: 1;
-  background-color: #cecae7;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Flex-grow property for personal info section */
+  background-color: #cecae7; /* Background color for personal info */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding inside personal info */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
 .main-content {
-  flex: 3;
-  background-color: #cecae7;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  flex: 3; /* Flex-grow property for main content section */
+  background-color: #cecae7; /* Background color for main content */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding inside main content */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
 h3 {
-  margin-top: 0;
-  border-bottom: 2px solid #0056b3;
-  padding-bottom: 5px;
-  font-size: 1.5em; 
-  color: #333;
+  margin-top: 0; /* No top margin for headings */
+  border-bottom: 2px solid #0056b3; /* Underline for headings */
+  padding-bottom: 5px; /* Padding below headings */
+  font-size: 1.5em; /* Font size for headings */
+  color: #333; /* Heading color */
 }
 
 .info-list {
-  list-style-type: none;
-  padding: 0;
+  list-style-type: none; /* Removing list style */
+  padding: 0; /* No padding for the list */
 }
 
 .info-list li {
-  margin: 8px 0;
-  font-weight: 500;
+  margin: 8px 0; /* Margin between list items */
+  font-weight: 500; /* Medium font weight for list items */
 }
 
 .skills-list {
-  list-style-type: none;
-  padding: 0;
+  list-style-type: none; /* Removing list style */
+  padding: 0; /* No padding for the list */
 }
 
 .skills-list li {
-  background: #e9ecef;
-  margin: 8px 0;
-  padding: 12px;
-  border-radius: 5px;
-  font-weight: 500;
-  transition: background 0.3s, transform 0.3s;
+  background: #e9ecef; /* Background color for skills */
+  margin: 8px 0; /* Margin between skills */
+  padding: 12px; /* Padding inside skills */
+  border-radius: 5px; /* Rounded corners for skills */
+  font-weight: 500; /* Medium font weight for skills */
+  transition: background 0.3s, transform 0.3s; /* Transition effects for hover */
 }
 
 .skills-list li:hover {
-  background: #d3d3d3;
-  transform: scale(1.02);
+  background: #d3d3d3; /* Background color on hover */
+  transform: scale(1.02); /* Slight scale effect on hover */
 }
 
 button {
-  margin: 20px auto;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #0056b3;
-  color: white;
-  cursor: pointer;
+  margin: 20px auto; /* Centering the button with margin */
+  padding: 10px 20px; /* Padding inside the button */
+  border: none; /* No border for the button */
+  border-radius: 5px; /* Rounded corners for the button */
+  background-color: #0056b3; /* Background color for the button */
+  color: white; /* Text color for the button */
+  cursor: pointer; /* Pointer cursor on hover */
 }
 
 button:hover {
-  background-color: #004494;
+  background-color: #004494; /* Darker background on hover */
 }
 </style>

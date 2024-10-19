@@ -26,3 +26,8 @@ To run this application locally, follow these steps:
    ```bash
    git clone https://github.com/yuridelossantos/vue-portfolio.git
    cd vue-portfolio
+
+
+## LOGIN PAGE 
+- USERNAME : user
+- PASSWORD : pass
