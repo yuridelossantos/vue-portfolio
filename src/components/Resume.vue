@@ -1,5 +1,6 @@
 <template>
   <div class="resume" ref="resumeContent">
+    <Header />
     <main class="resume-content">
       <h2 class="resume-title">Jonathan Yuri N. Delos Santos</h2>
       <h4 class="resume-subtitle">Computer Engineering | Specializing in Cybersecurity</h4>
@@ -15,7 +16,7 @@
               <li>Citizenship: <span>Filipino</span></li>
               <li>Contact: <span>+63 964 944 8259</span></li>
               <li>Email: <a href="mailto:mjydelossantos@tip.edu.ph">mjydelossantos@tip.edu.ph</a></li>
-              <li>LinkedIn: <a href="https://www.linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5" target="_blank">LinkedIn Profile</a></li>
+              <li>LinkedIn: <a href="https://www.linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5" target="_blank" rel="noopener noreferrer">linkedin.com/in/jonathan-yuri-delos-santos-a92b232b5</a></li>
             </ul>
           </section>
 
@@ -31,17 +32,19 @@
         </aside>
 
         <section class="main-content">
-          <section>
-            <h3>Education</h3>
-            <div class="education-item">
-              <h4>Bachelor of Science in Computer Engineering - Technological Institute of the Philippines</h4>
-              <p><em>2021 - 2025</em></p>
-              <h4>Senior High School (STEM) - Arellano University Juan Sumulong Campus</h4>
-              <p><em>2019 - 2021</em></p>
-              <h4>Junior High School - Carlos P. Garcia High School</h4>
-              <p><em>2015 - 2019</em></p>
-            </div>
-          </section>
+          <h3>Education</h3>
+          <div class="education-item">
+            <h4>Bachelor of Science in Computer Engineering</h4>
+            <p><em>Technological Institute of the Philippines, 2021 - 2025</em></p>
+          </div>
+          <div class="education-item">
+            <h4>Senior High School (STEM)</h4>
+            <p><em>Arellano University Juan Sumulong Campus, 2019 - 2021</em></p>
+          </div>
+          <div class="education-item">
+            <h4>Junior High School</h4>
+            <p><em>Carlos P. Garcia High School, 2015 - 2019</em></p>
+          </div>
 
           <section>
             <h3>Skills</h3>
@@ -54,30 +57,40 @@
           </section>
         </section>
       </div>
-
-      <button @click="downloadPDF">Download as PDF</button>
     </main>
+    <button @click="downloadPDF">Download Resume</button>
+    <Footer />
   </div>
 </template>
 
 <script>
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import Header from './Header.vue'; 
+import Footer from './Footer.vue'; 
+import html2pdf from 'html2pdf.js';
 
 export default {
   name: 'Resume',
+  components: {
+    Header,
+    Footer
+  },
   methods: {
-    async downloadPDF() {
-      const resumeContent = this.$refs.resumeContent;
-      const canvas = await html2canvas(resumeContent);
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    downloadPDF() {
+      const resumeElement = this.$refs.resumeContent;
 
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('Resume_Jonathan_Yuri_N_Delos_Santos.pdf');
+      const mainContent = resumeElement.querySelector('.resume-content').cloneNode(true);
+      const opt = {
+        margin: 0.5, 
+        filename: 'resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'legal', orientation: 'portrait' } 
+      };
+
+      html2pdf()
+        .from(mainContent) 
+        .set(opt)
+        .save();
     }
   }
 };
@@ -86,87 +99,105 @@ export default {
 <style scoped>
 .resume {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  font-family: 'Arial', sans-serif;
+  color: #333;
   padding: 20px;
 }
 
 .resume-content {
-  width: 100%;
-  max-width: 900px;
-  background-color: #fff;
-  padding: 30px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  max-width: 100%; 
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  page-break-inside: avoid; 
 }
 
 .resume-title {
   text-align: center;
-  font-size: 2.5em;
   color: #0056b3;
-  margin-bottom: 0.2em;
+  font-size: 2.5em; 
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .resume-subtitle {
   text-align: center;
-  font-size: 1.2em;
-  margin-bottom: 30px;
   color: #333;
+  font-size: 1.5em; 
+  margin-bottom: 20px;
 }
 
 .content-container {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  gap: 40px;
 }
 
 .personal-info {
   flex: 1;
-  background-color: #f0f0f5;
+  background-color: #cecae7;
+  border-radius: 10px;
   padding: 20px;
-  border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .main-content {
-  flex: 2;
-  background-color: #f0f0f5;
+  flex: 3;
+  background-color: #cecae7;
+  border-radius: 10px;
   padding: 20px;
-  border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 h3 {
+  margin-top: 0;
   border-bottom: 2px solid #0056b3;
-  padding-bottom: 8px;
-  margin-bottom: 15px;
-  color: #0056b3;
+  padding-bottom: 5px;
+  font-size: 1.5em; 
+  color: #333;
 }
 
-.info-list,
-.skills-list {
-  list-style: none;
+.info-list {
+  list-style-type: none;
   padding: 0;
 }
 
-.info-list li,
-.skills-list li {
-  margin-bottom: 10px;
+.info-list li {
+  margin: 8px 0;
   font-weight: 500;
 }
 
+.skills-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills-list li {
+  background: #e9ecef;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.skills-list li:hover {
+  background: #d3d3d3;
+  transform: scale(1.02);
+}
+
 button {
-  display: block;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 10px 20px;
-  background-color: #0056b3;
-  color: white;
   border: none;
   border-radius: 5px;
+  background-color: #0056b3;
+  color: white;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #003f7f;
+  background-color: #004494;
 }
 </style>
